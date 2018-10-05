@@ -6,7 +6,7 @@
 #ifndef BITCOIN_STREAMS_H
 #define BITCOIN_STREAMS_H
 
-#include "alloeblockmailrs.h"
+#include "allocators.h"
 #include "serialize.h"
 
 #include <algorithm>
@@ -37,7 +37,7 @@ public:
     int nType;
     int nVersion;
 
-    typedef vector_type::alloeblockmailr_type alloeblockmailr_type;
+    typedef vector_type::allocator_type allocator_type;
     typedef vector_type::size_type size_type;
     typedef vector_type::difference_type difference_type;
     typedef vector_type::reference reference;

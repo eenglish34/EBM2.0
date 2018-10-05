@@ -81,7 +81,7 @@ BITCOIN_CORE_H = \
   accumulatormap.h \
   addrman.h \
   alert.h \
-  alloeblockmailrs.h \
+  allocators.h \
   amount.h \
   base58.h \
   bip38.h \
@@ -361,7 +361,7 @@ libbitcoin_common_a_CPPFLAGS = $(BITCOIN_INCLUDES)
 libbitcoin_common_a_SOURCES = \
   accumulators.cpp \
   accumulatormap.cpp \
-  alloeblockmailrs.cpp \
+  allocators.cpp \
   amount.cpp \
   base58.cpp \
   bip38.cpp \
@@ -395,7 +395,7 @@ libbitcoin_common_a_SOURCES = \
 # backward-compatibility objects and their sanity checks are linked.
 libbitcoin_util_a_CPPFLAGS = $(BITCOIN_INCLUDES)
 libbitcoin_util_a_SOURCES = \
-  alloeblockmailrs.cpp \
+  allocators.cpp \
   compat/strnlen.cpp \
   compat/glibc_sanity.cpp \
   compat/glibcxx_sanity.cpp \
@@ -495,7 +495,7 @@ eblockmail_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 if BUILD_BITCOIN_LIBS
 include_HEADERS = script/bitcoinconsensus.h
 libbitcoinconsensus_la_SOURCES = \
-  alloeblockmailrs.cpp \
+  allocators.cpp \
   primitives/transaction.cpp \
   crypto/hmac_sha512.cpp \
   crypto/scrypt.cpp \

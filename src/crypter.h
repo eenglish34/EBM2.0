@@ -5,7 +5,7 @@
 #ifndef BITCOIN_CRYPTER_H
 #define BITCOIN_CRYPTER_H
 
-#include "alloeblockmailrs.h"
+#include "allocators.h"
 #include "keystore.h"
 #include "serialize.h"
 

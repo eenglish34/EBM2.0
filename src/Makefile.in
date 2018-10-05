@@ -270,7 +270,7 @@ libbitcoin_common_a_LIBADD =
 am_libbitcoin_common_a_OBJECTS =  \
 	libbitcoin_common_a-accumulators.$(OBJEXT) \
 	libbitcoin_common_a-accumulatormap.$(OBJEXT) \
-	libbitcoin_common_a-alloeblockmailrs.$(OBJEXT) \
+	libbitcoin_common_a-allocators.$(OBJEXT) \
 	libbitcoin_common_a-amount.$(OBJEXT) \
 	libbitcoin_common_a-base58.$(OBJEXT) \
 	libbitcoin_common_a-bip38.$(OBJEXT) \
@@ -334,13 +334,13 @@ am_libbitcoin_server_a_OBJECTS =  \
 libbitcoin_server_a_OBJECTS = $(am_libbitcoin_server_a_OBJECTS)
 libbitcoin_util_a_AR = $(AR) $(ARFLAGS)
 libbitcoin_util_a_LIBADD =
-am__libbitcoin_util_a_SOURCES_DIST = alloeblockmailrs.cpp compat/strnlen.cpp \
+am__libbitcoin_util_a_SOURCES_DIST = allocators.cpp compat/strnlen.cpp \
 	compat/glibc_sanity.cpp compat/glibcxx_sanity.cpp \
 	chainparamsbase.cpp clientversion.cpp random.cpp \
 	rpcprotocol.cpp sync.cpp uint256.cpp util.cpp \
 	utilstrencodings.cpp utilmoneystr.cpp utiltime.cpp \
 	activemasternode.h accumulators.h accumulatormap.h addrman.h \
-	alert.h alloeblockmailrs.h amount.h base58.h bip38.h bloom.h chain.h \
+	alert.h allocators.h amount.h base58.h bip38.h bloom.h chain.h \
 	chainparams.h chainparamsbase.h chainparamsseeds.h \
 	checkpoints.h checkqueue.h clientversion.h coincontrol.h \
 	coins.h compat.h compat/sanity.h compressor.h \
@@ -365,7 +365,7 @@ am__libbitcoin_util_a_SOURCES_DIST = alloeblockmailrs.cpp compat/strnlen.cpp \
 	compat/glibc_compat.cpp compat/glibcxx_compat.cpp
 @GLIBC_BACK_COMPAT_TRUE@am__objects_2 = compat/libbitcoin_util_a-glibc_compat.$(OBJEXT) \
 @GLIBC_BACK_COMPAT_TRUE@	compat/libbitcoin_util_a-glibcxx_compat.$(OBJEXT)
-am_libbitcoin_util_a_OBJECTS = libbitcoin_util_a-alloeblockmailrs.$(OBJEXT) \
+am_libbitcoin_util_a_OBJECTS = libbitcoin_util_a-allocators.$(OBJEXT) \
 	compat/libbitcoin_util_a-strnlen.$(OBJEXT) \
 	compat/libbitcoin_util_a-glibc_sanity.$(OBJEXT) \
 	compat/libbitcoin_util_a-glibcxx_sanity.$(OBJEXT) \
@@ -715,7 +715,7 @@ am__DEPENDENCIES_1 =
 @BUILD_BITCOIN_LIBS_TRUE@	$(am__DEPENDENCIES_1) \
 @BUILD_BITCOIN_LIBS_TRUE@	$(am__DEPENDENCIES_1) \
 @BUILD_BITCOIN_LIBS_TRUE@	$(am__append_15)
-am__libbitcoinconsensus_la_SOURCES_DIST = alloeblockmailrs.cpp \
+am__libbitcoinconsensus_la_SOURCES_DIST = allocators.cpp \
 	primitives/transaction.cpp crypto/hmac_sha512.cpp \
 	crypto/scrypt.cpp crypto/sha1.cpp crypto/sha256.cpp \
 	crypto/sha512.cpp crypto/ripemd160.cpp eccryptoverify.cpp \
@@ -726,7 +726,7 @@ am__libbitcoinconsensus_la_SOURCES_DIST = alloeblockmailrs.cpp \
 @BUILD_BITCOIN_LIBS_TRUE@@GLIBC_BACK_COMPAT_TRUE@am__objects_9 = compat/libbitcoinconsensus_la-glibc_compat.lo \
 @BUILD_BITCOIN_LIBS_TRUE@@GLIBC_BACK_COMPAT_TRUE@	compat/libbitcoinconsensus_la-glibcxx_compat.lo
 @BUILD_BITCOIN_LIBS_TRUE@am_libbitcoinconsensus_la_OBJECTS =  \
-@BUILD_BITCOIN_LIBS_TRUE@	libbitcoinconsensus_la-alloeblockmailrs.lo \
+@BUILD_BITCOIN_LIBS_TRUE@	libbitcoinconsensus_la-allocators.lo \
 @BUILD_BITCOIN_LIBS_TRUE@	primitives/libbitcoinconsensus_la-transaction.lo \
 @BUILD_BITCOIN_LIBS_TRUE@	crypto/libbitcoinconsensus_la-hmac_sha512.lo \
 @BUILD_BITCOIN_LIBS_TRUE@	crypto/libbitcoinconsensus_la-scrypt.lo \
@@ -1602,7 +1602,7 @@ BITCOIN_CORE_H = \
   accumulatormap.h \
   addrman.h \
   alert.h \
-  alloeblockmailrs.h \
+  allocators.h \
   amount.h \
   base58.h \
   bip38.h \
@@ -1878,7 +1878,7 @@ libbitcoin_common_a_CPPFLAGS = $(BITCOIN_INCLUDES)
 libbitcoin_common_a_SOURCES = \
   accumulators.cpp \
   accumulatormap.cpp \
-  alloeblockmailrs.cpp \
+  allocators.cpp \
   amount.cpp \
   base58.cpp \
   bip38.cpp \
@@ -1912,7 +1912,7 @@ libbitcoin_common_a_SOURCES = \
 # This library *must* be included to make sure that the glibc
 # backward-compatibility objects and their sanity checks are linked.
 libbitcoin_util_a_CPPFLAGS = $(BITCOIN_INCLUDES)
-libbitcoin_util_a_SOURCES = alloeblockmailrs.cpp compat/strnlen.cpp \
+libbitcoin_util_a_SOURCES = allocators.cpp compat/strnlen.cpp \
 	compat/glibc_sanity.cpp compat/glibcxx_sanity.cpp \
 	chainparamsbase.cpp clientversion.cpp random.cpp \
 	rpcprotocol.cpp sync.cpp uint256.cpp util.cpp \
@@ -1970,7 +1970,7 @@ eblockmail_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 eblockmail_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 @BUILD_BITCOIN_LIBS_TRUE@include_HEADERS = script/bitcoinconsensus.h
 @BUILD_BITCOIN_LIBS_TRUE@libbitcoinconsensus_la_SOURCES =  \
-@BUILD_BITCOIN_LIBS_TRUE@	alloeblockmailrs.cpp \
+@BUILD_BITCOIN_LIBS_TRUE@	allocators.cpp \
 @BUILD_BITCOIN_LIBS_TRUE@	primitives/transaction.cpp \
 @BUILD_BITCOIN_LIBS_TRUE@	crypto/hmac_sha512.cpp \
 @BUILD_BITCOIN_LIBS_TRUE@	crypto/scrypt.cpp crypto/sha1.cpp \
@@ -3171,7 +3171,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_cli_a-rpcclient.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_common_a-accumulatormap.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_common_a-accumulators.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_common_a-alloeblockmailrs.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_common_a-allocators.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_common_a-amount.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_common_a-base58.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_common_a-bip38.Po@am__quote@
@@ -3218,7 +3218,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_server_a-txdb.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_server_a-txmempool.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_server_a-validationinterface.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_util_a-alloeblockmailrs.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_util_a-allocators.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_util_a-chainparamsbase.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_util_a-clientversion.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_util_a-random.Po@am__quote@
@@ -3249,7 +3249,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_wallet_a-wallet.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_wallet_a-wallet_ismine.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_wallet_a-walletdb.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoinconsensus_la-alloeblockmailrs.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoinconsensus_la-allocators.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoinconsensus_la-eccryptoverify.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoinconsensus_la-ecwrapper.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoinconsensus_la-hash.Plo@am__quote@
@@ -3970,19 +3970,19 @@ libbitcoin_common_a-accumulatormap.obj: accumulatormap.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libbitcoin_common_a-accumulatormap.obj `if test -f 'accumulatormap.cpp'; then $(CYGPATH_W) 'accumulatormap.cpp'; else $(CYGPATH_W) '$(srcdir)/accumulatormap.cpp'; fi`
 
-libbitcoin_common_a-alloeblockmailrs.o: alloeblockmailrs.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libbitcoin_common_a-alloeblockmailrs.o -MD -MP -MF $(DEPDIR)/libbitcoin_common_a-alloeblockmailrs.Tpo -c -o libbitcoin_common_a-alloeblockmailrs.o `test -f 'alloeblockmailrs.cpp' || echo '$(srcdir)/'`alloeblockmailrs.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libbitcoin_common_a-alloeblockmailrs.Tpo $(DEPDIR)/libbitcoin_common_a-alloeblockmailrs.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='alloeblockmailrs.cpp' object='libbitcoin_common_a-alloeblockmailrs.o' libtool=no @AMDEPBACKSLASH@
+libbitcoin_common_a-allocators.o: allocators.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libbitcoin_common_a-allocators.o -MD -MP -MF $(DEPDIR)/libbitcoin_common_a-allocators.Tpo -c -o libbitcoin_common_a-allocators.o `test -f 'allocators.cpp' || echo '$(srcdir)/'`allocators.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libbitcoin_common_a-allocators.Tpo $(DEPDIR)/libbitcoin_common_a-allocators.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='allocators.cpp' object='libbitcoin_common_a-allocators.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libbitcoin_common_a-alloeblockmailrs.o `test -f 'alloeblockmailrs.cpp' || echo '$(srcdir)/'`alloeblockmailrs.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libbitcoin_common_a-allocators.o `test -f 'allocators.cpp' || echo '$(srcdir)/'`allocators.cpp
 
-libbitcoin_common_a-alloeblockmailrs.obj: alloeblockmailrs.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libbitcoin_common_a-alloeblockmailrs.obj -MD -MP -MF $(DEPDIR)/libbitcoin_common_a-alloeblockmailrs.Tpo -c -o libbitcoin_common_a-alloeblockmailrs.obj `if test -f 'alloeblockmailrs.cpp'; then $(CYGPATH_W) 'alloeblockmailrs.cpp'; else $(CYGPATH_W) '$(srcdir)/alloeblockmailrs.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libbitcoin_common_a-alloeblockmailrs.Tpo $(DEPDIR)/libbitcoin_common_a-alloeblockmailrs.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='alloeblockmailrs.cpp' object='libbitcoin_common_a-alloeblockmailrs.obj' libtool=no @AMDEPBACKSLASH@
+libbitcoin_common_a-allocators.obj: allocators.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libbitcoin_common_a-allocators.obj -MD -MP -MF $(DEPDIR)/libbitcoin_common_a-allocators.Tpo -c -o libbitcoin_common_a-allocators.obj `if test -f 'allocators.cpp'; then $(CYGPATH_W) 'allocators.cpp'; else $(CYGPATH_W) '$(srcdir)/allocators.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libbitcoin_common_a-allocators.Tpo $(DEPDIR)/libbitcoin_common_a-allocators.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='allocators.cpp' object='libbitcoin_common_a-allocators.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libbitcoin_common_a-alloeblockmailrs.obj `if test -f 'alloeblockmailrs.cpp'; then $(CYGPATH_W) 'alloeblockmailrs.cpp'; else $(CYGPATH_W) '$(srcdir)/alloeblockmailrs.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libbitcoin_common_a-allocators.obj `if test -f 'allocators.cpp'; then $(CYGPATH_W) 'allocators.cpp'; else $(CYGPATH_W) '$(srcdir)/allocators.cpp'; fi`
 
 libbitcoin_common_a-amount.o: amount.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_common_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libbitcoin_common_a-amount.o -MD -MP -MF $(DEPDIR)/libbitcoin_common_a-amount.Tpo -c -o libbitcoin_common_a-amount.o `test -f 'amount.cpp' || echo '$(srcdir)/'`amount.cpp
@@ -4754,19 +4754,19 @@ libbitcoin_server_a-validationinterface.obj: validationinterface.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_server_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libbitcoin_server_a-validationinterface.obj `if test -f 'validationinterface.cpp'; then $(CYGPATH_W) 'validationinterface.cpp'; else $(CYGPATH_W) '$(srcdir)/validationinterface.cpp'; fi`
 
-libbitcoin_util_a-alloeblockmailrs.o: alloeblockmailrs.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_util_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libbitcoin_util_a-alloeblockmailrs.o -MD -MP -MF $(DEPDIR)/libbitcoin_util_a-alloeblockmailrs.Tpo -c -o libbitcoin_util_a-alloeblockmailrs.o `test -f 'alloeblockmailrs.cpp' || echo '$(srcdir)/'`alloeblockmailrs.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libbitcoin_util_a-alloeblockmailrs.Tpo $(DEPDIR)/libbitcoin_util_a-alloeblockmailrs.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='alloeblockmailrs.cpp' object='libbitcoin_util_a-alloeblockmailrs.o' libtool=no @AMDEPBACKSLASH@
+libbitcoin_util_a-allocators.o: allocators.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_util_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libbitcoin_util_a-allocators.o -MD -MP -MF $(DEPDIR)/libbitcoin_util_a-allocators.Tpo -c -o libbitcoin_util_a-allocators.o `test -f 'allocators.cpp' || echo '$(srcdir)/'`allocators.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libbitcoin_util_a-allocators.Tpo $(DEPDIR)/libbitcoin_util_a-allocators.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='allocators.cpp' object='libbitcoin_util_a-allocators.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_util_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libbitcoin_util_a-alloeblockmailrs.o `test -f 'alloeblockmailrs.cpp' || echo '$(srcdir)/'`alloeblockmailrs.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_util_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libbitcoin_util_a-allocators.o `test -f 'allocators.cpp' || echo '$(srcdir)/'`allocators.cpp
 
-libbitcoin_util_a-alloeblockmailrs.obj: alloeblockmailrs.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_util_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libbitcoin_util_a-alloeblockmailrs.obj -MD -MP -MF $(DEPDIR)/libbitcoin_util_a-alloeblockmailrs.Tpo -c -o libbitcoin_util_a-alloeblockmailrs.obj `if test -f 'alloeblockmailrs.cpp'; then $(CYGPATH_W) 'alloeblockmailrs.cpp'; else $(CYGPATH_W) '$(srcdir)/alloeblockmailrs.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libbitcoin_util_a-alloeblockmailrs.Tpo $(DEPDIR)/libbitcoin_util_a-alloeblockmailrs.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='alloeblockmailrs.cpp' object='libbitcoin_util_a-alloeblockmailrs.obj' libtool=no @AMDEPBACKSLASH@
+libbitcoin_util_a-allocators.obj: allocators.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_util_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libbitcoin_util_a-allocators.obj -MD -MP -MF $(DEPDIR)/libbitcoin_util_a-allocators.Tpo -c -o libbitcoin_util_a-allocators.obj `if test -f 'allocators.cpp'; then $(CYGPATH_W) 'allocators.cpp'; else $(CYGPATH_W) '$(srcdir)/allocators.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libbitcoin_util_a-allocators.Tpo $(DEPDIR)/libbitcoin_util_a-allocators.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='allocators.cpp' object='libbitcoin_util_a-allocators.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_util_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libbitcoin_util_a-alloeblockmailrs.obj `if test -f 'alloeblockmailrs.cpp'; then $(CYGPATH_W) 'alloeblockmailrs.cpp'; else $(CYGPATH_W) '$(srcdir)/alloeblockmailrs.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_util_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libbitcoin_util_a-allocators.obj `if test -f 'allocators.cpp'; then $(CYGPATH_W) 'allocators.cpp'; else $(CYGPATH_W) '$(srcdir)/allocators.cpp'; fi`
 
 compat/libbitcoin_util_a-strnlen.o: compat/strnlen.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoin_util_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT compat/libbitcoin_util_a-strnlen.o -MD -MP -MF compat/$(DEPDIR)/libbitcoin_util_a-strnlen.Tpo -c -o compat/libbitcoin_util_a-strnlen.o `test -f 'compat/strnlen.cpp' || echo '$(srcdir)/'`compat/strnlen.cpp
@@ -6840,12 +6840,12 @@ qt/qt_libbitcoinqt_a-qrc_eblockmail_locale.obj: qt/qrc_eblockmail_locale.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o qt/qt_libbitcoinqt_a-qrc_eblockmail_locale.obj `if test -f 'qt/qrc_eblockmail_locale.cpp'; then $(CYGPATH_W) 'qt/qrc_eblockmail_locale.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/qrc_eblockmail_locale.cpp'; fi`
 
-libbitcoinconsensus_la-alloeblockmailrs.lo: alloeblockmailrs.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoinconsensus_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libbitcoinconsensus_la-alloeblockmailrs.lo -MD -MP -MF $(DEPDIR)/libbitcoinconsensus_la-alloeblockmailrs.Tpo -c -o libbitcoinconsensus_la-alloeblockmailrs.lo `test -f 'alloeblockmailrs.cpp' || echo '$(srcdir)/'`alloeblockmailrs.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libbitcoinconsensus_la-alloeblockmailrs.Tpo $(DEPDIR)/libbitcoinconsensus_la-alloeblockmailrs.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='alloeblockmailrs.cpp' object='libbitcoinconsensus_la-alloeblockmailrs.lo' libtool=yes @AMDEPBACKSLASH@
+libbitcoinconsensus_la-allocators.lo: allocators.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoinconsensus_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libbitcoinconsensus_la-allocators.lo -MD -MP -MF $(DEPDIR)/libbitcoinconsensus_la-allocators.Tpo -c -o libbitcoinconsensus_la-allocators.lo `test -f 'allocators.cpp' || echo '$(srcdir)/'`allocators.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libbitcoinconsensus_la-allocators.Tpo $(DEPDIR)/libbitcoinconsensus_la-allocators.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='allocators.cpp' object='libbitcoinconsensus_la-allocators.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoinconsensus_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libbitcoinconsensus_la-alloeblockmailrs.lo `test -f 'alloeblockmailrs.cpp' || echo '$(srcdir)/'`alloeblockmailrs.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoinconsensus_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libbitcoinconsensus_la-allocators.lo `test -f 'allocators.cpp' || echo '$(srcdir)/'`allocators.cpp
 
 primitives/libbitcoinconsensus_la-transaction.lo: primitives/transaction.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoinconsensus_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT primitives/libbitcoinconsensus_la-transaction.lo -MD -MP -MF primitives/$(DEPDIR)/libbitcoinconsensus_la-transaction.Tpo -c -o primitives/libbitcoinconsensus_la-transaction.lo `test -f 'primitives/transaction.cpp' || echo '$(srcdir)/'`primitives/transaction.cpp
