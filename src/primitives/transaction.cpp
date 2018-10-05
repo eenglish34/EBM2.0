@@ -191,7 +191,7 @@ CAmount CTransaction::GetZerocoinSpent() const
         if(!txin.scriptSig.IsZerocoinSpend())
             LogPrintf("%s is not zcspend\n", __func__);
 
-        std::vector<char, zero_after_free_alloeblockmailr<char> > dataTxIn;
+        std::vector<char, zero_after_free_allocator<char> > dataTxIn;
         dataTxIn.insert(dataTxIn.end(), txin.scriptSig.begin() + 4, txin.scriptSig.end());
 
         CDataStream serializedCoinSpend(dataTxIn, SER_NETWORK, PROTOCOL_VERSION);

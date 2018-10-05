@@ -124,13 +124,13 @@ public:
 
 /**
  * Singleton class to keep track of locked (ie, non-swappable) memory pages, for use in
- * std::alloeblockmailr templates.
+ * std::allocator templates.
  *
  * Some implementations of the STL allocate memory in some constructors (i.e., see
- * MSVC's vector<T> implementation where it allocates 1 byte of memory in the alloeblockmailr.)
+ * MSVC's vector<T> implementation where it allocates 1 byte of memory in the allocator.)
  * Due to the unpredictable order of static initializers, we have to make sure the
  * LockedPageManager instance exists before any other STL-based objects that use
- * secure_alloeblockmailr are created. So instead of having LockedPageManager also be
+ * secure_allocator are created. So instead of having LockedPageManager also be
  * static-initialized, it is created on demand.
  */
 class LockedPageManager : public LockedPageManagerBase<MemoryPageLocker>
@@ -178,13 +178,13 @@ void UnlockObject(const T& t)
 }
 
 //
-// Alloeblockmailr that locks its contents from being paged
+// allocator that locks its contents from being paged
 // out of memory and clears its contents before deletion.
 //
 template <typename T>
-struct secure_alloeblockmailr : public std::alloeblockmailr<T> {
+struct secure_allocator : public std::allocator<T> {
     // MSVC8 default copy constructor is broken
-    typedef std::alloeblockmailr<T> base;
+    typedef std::allocator<T> base;
     typedef typename base::size_type size_type;
     typedef typename base::difference_type difference_type;
     typedef typename base::pointer pointer;
@@ -192,22 +192,22 @@ struct secure_alloeblockmailr : public std::alloeblockmailr<T> {
     typedef typename base::reference reference;
     typedef typename base::const_reference const_reference;
     typedef typename base::value_type value_type;
-    secure_alloeblockmailr() throw() {}
-    secure_alloeblockmailr(const secure_alloeblockmailr& a) throw() : base(a) {}
+    secure_allocator() throw() {}
+    secure_allocator(const secure_allocator& a) throw() : base(a) {}
     template <typename U>
-    secure_alloeblockmailr(const secure_alloeblockmailr<U>& a) throw() : base(a)
+    secure_allocator(const secure_allocator<U>& a) throw() : base(a)
     {
     }
-    ~secure_alloeblockmailr() throw() {}
+    ~secure_allocator() throw() {}
     template <typename _Other>
     struct rebind {
-        typedef secure_alloeblockmailr<_Other> other;
+        typedef secure_allocator<_Other> other;
     };
 
     T* allocate(std::size_t n, const void* hint = 0)
     {
         T* p;
-        p = std::alloeblockmailr<T>::allocate(n, hint);
+        p = std::allocator<T>::allocate(n, hint);
         if (p != NULL)
             LockedPageManager::Instance().LockRange(p, sizeof(T) * n);
         return p;
@@ -219,18 +219,18 @@ struct secure_alloeblockmailr : public std::alloeblockmailr<T> {
             OPENSSL_cleanse(p, sizeof(T) * n);
             LockedPageManager::Instance().UnlockRange(p, sizeof(T) * n);
         }
-        std::alloeblockmailr<T>::deallocate(p, n);
+        std::allocator<T>::deallocate(p, n);
     }
 };
 
 
 //
-// Alloeblockmailr that clears its contents before deletion.
+// allocator that clears its contents before deletion.
 //
 template <typename T>
-struct zero_after_free_alloeblockmailr : public std::alloeblockmailr<T> {
+struct zero_after_free_allocator : public std::allocator<T> {
     // MSVC8 default copy constructor is broken
-    typedef std::alloeblockmailr<T> base;
+    typedef std::allocator<T> base;
     typedef typename base::size_type size_type;
     typedef typename base::difference_type difference_type;
     typedef typename base::pointer pointer;
@@ -238,30 +238,30 @@ struct zero_after_free_alloeblockmailr : public std::alloeblockmailr<T> {
     typedef typename base::reference reference;
     typedef typename base::const_reference const_reference;
     typedef typename base::value_type value_type;
-    zero_after_free_alloeblockmailr() throw() {}
-    zero_after_free_alloeblockmailr(const zero_after_free_alloeblockmailr& a) throw() : base(a) {}
+    zero_after_free_allocator() throw() {}
+    zero_after_free_allocator(const zero_after_free_allocator& a) throw() : base(a) {}
     template <typename U>
-    zero_after_free_alloeblockmailr(const zero_after_free_alloeblockmailr<U>& a) throw() : base(a)
+    zero_after_free_allocator(const zero_after_free_allocator<U>& a) throw() : base(a)
     {
     }
-    ~zero_after_free_alloeblockmailr() throw() {}
+    ~zero_after_free_allocator() throw() {}
     template <typename _Other>
     struct rebind {
-        typedef zero_after_free_alloeblockmailr<_Other> other;
+        typedef zero_after_free_allocator<_Other> other;
     };
 
     void deallocate(T* p, std::size_t n)
     {
         if (p != NULL)
             OPENSSL_cleanse(p, sizeof(T) * n);
-        std::alloeblockmailr<T>::deallocate(p, n);
+        std::allocator<T>::deallocate(p, n);
     }
 };
 
-// This is exactly like std::string, but with a custom alloeblockmailr.
-typedef std::basic_string<char, std::char_traits<char>, secure_alloeblockmailr<char> > SecureString;
+// This is exactly like std::string, but with a custom allocator.
+typedef std::basic_string<char, std::char_traits<char>, secure_allocator<char> > SecureString;
 
 // Byte-vector that clears its contents before deletion.
-typedef std::vector<char, zero_after_free_alloeblockmailr<char> > CSerializeData;
+typedef std::vector<char, zero_after_free_allocator<char> > CSerializeData;
 
 #endif // BITCOIN_ALLOCATORS_H

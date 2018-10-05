@@ -884,7 +884,7 @@ am__test_test_eblockmail_SOURCES_DIST =  \
 	test/zerocoin_denomination_tests.cpp \
 	test/zerocoin_transactions_tests.cpp \
 	test/benchmark_zerocoin.cpp test/tutorial_zerocoin.cpp \
-	test/libzerocoin_tests.cpp test/alloeblockmailr_tests.cpp \
+	test/libzerocoin_tests.cpp test/allocator_tests.cpp \
 	test/base32_tests.cpp test/base58_tests.cpp \
 	test/base64_tests.cpp test/checkblock_tests.cpp \
 	test/Checkpoints_tests.cpp test/coins_tests.cpp \
@@ -918,7 +918,7 @@ am__test_test_eblockmail_SOURCES_DIST =  \
 @ENABLE_TESTS_TRUE@	test/test_test_eblockmail-benchmark_zerocoin.$(OBJEXT) \
 @ENABLE_TESTS_TRUE@	test/test_test_eblockmail-tutorial_zerocoin.$(OBJEXT) \
 @ENABLE_TESTS_TRUE@	test/test_test_eblockmail-libzerocoin_tests.$(OBJEXT) \
-@ENABLE_TESTS_TRUE@	test/test_test_eblockmail-alloeblockmailr_tests.$(OBJEXT) \
+@ENABLE_TESTS_TRUE@	test/test_test_eblockmail-allocator_tests.$(OBJEXT) \
 @ENABLE_TESTS_TRUE@	test/test_test_eblockmail-base32_tests.$(OBJEXT) \
 @ENABLE_TESTS_TRUE@	test/test_test_eblockmail-base58_tests.$(OBJEXT) \
 @ENABLE_TESTS_TRUE@	test/test_test_eblockmail-base64_tests.$(OBJEXT) \
@@ -2017,7 +2017,7 @@ EXTRA_DIST = leveldb $(am__append_18)
 @ENABLE_TESTS_TRUE@	test/benchmark_zerocoin.cpp \
 @ENABLE_TESTS_TRUE@	test/tutorial_zerocoin.cpp \
 @ENABLE_TESTS_TRUE@	test/libzerocoin_tests.cpp \
-@ENABLE_TESTS_TRUE@	test/alloeblockmailr_tests.cpp \
+@ENABLE_TESTS_TRUE@	test/allocator_tests.cpp \
 @ENABLE_TESTS_TRUE@	test/base32_tests.cpp test/base58_tests.cpp \
 @ENABLE_TESTS_TRUE@	test/base64_tests.cpp \
 @ENABLE_TESTS_TRUE@	test/checkblock_tests.cpp \
@@ -3063,7 +3063,7 @@ test/test_test_eblockmail-tutorial_zerocoin.$(OBJEXT):  \
 	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
 test/test_test_eblockmail-libzerocoin_tests.$(OBJEXT):  \
 	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_eblockmail-alloeblockmailr_tests.$(OBJEXT):  \
+test/test_test_eblockmail-allocator_tests.$(OBJEXT):  \
 	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
 test/test_test_eblockmail-base32_tests.$(OBJEXT): test/$(am__dirstamp) \
 	test/$(DEPDIR)/$(am__dirstamp)
@@ -3440,7 +3440,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@test/$(DEPDIR)/test_test_eblockmail-Checkpoints_tests.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@test/$(DEPDIR)/test_test_eblockmail-DoS_tests.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@test/$(DEPDIR)/test_test_eblockmail-accounting_tests.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@test/$(DEPDIR)/test_test_eblockmail-alloeblockmailr_tests.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@test/$(DEPDIR)/test_test_eblockmail-allocator_tests.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@test/$(DEPDIR)/test_test_eblockmail-base32_tests.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@test/$(DEPDIR)/test_test_eblockmail-base58_tests.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@test/$(DEPDIR)/test_test_eblockmail-base64_tests.Po@am__quote@
@@ -7183,19 +7183,19 @@ test/test_test_eblockmail-libzerocoin_tests.obj: test/libzerocoin_tests.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(test_test_eblockmail_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o test/test_test_eblockmail-libzerocoin_tests.obj `if test -f 'test/libzerocoin_tests.cpp'; then $(CYGPATH_W) 'test/libzerocoin_tests.cpp'; else $(CYGPATH_W) '$(srcdir)/test/libzerocoin_tests.cpp'; fi`
 
-test/test_test_eblockmail-alloeblockmailr_tests.o: test/alloeblockmailr_tests.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(test_test_eblockmail_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT test/test_test_eblockmail-alloeblockmailr_tests.o -MD -MP -MF test/$(DEPDIR)/test_test_eblockmail-alloeblockmailr_tests.Tpo -c -o test/test_test_eblockmail-alloeblockmailr_tests.o `test -f 'test/alloeblockmailr_tests.cpp' || echo '$(srcdir)/'`test/alloeblockmailr_tests.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) test/$(DEPDIR)/test_test_eblockmail-alloeblockmailr_tests.Tpo test/$(DEPDIR)/test_test_eblockmail-alloeblockmailr_tests.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='test/alloeblockmailr_tests.cpp' object='test/test_test_eblockmail-alloeblockmailr_tests.o' libtool=no @AMDEPBACKSLASH@
+test/test_test_eblockmail-allocator_tests.o: test/allocator_tests.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(test_test_eblockmail_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT test/test_test_eblockmail-allocator_tests.o -MD -MP -MF test/$(DEPDIR)/test_test_eblockmail-allocator_tests.Tpo -c -o test/test_test_eblockmail-allocator_tests.o `test -f 'test/allocator_tests.cpp' || echo '$(srcdir)/'`test/allocator_tests.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) test/$(DEPDIR)/test_test_eblockmail-allocator_tests.Tpo test/$(DEPDIR)/test_test_eblockmail-allocator_tests.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='test/allocator_tests.cpp' object='test/test_test_eblockmail-allocator_tests.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(test_test_eblockmail_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o test/test_test_eblockmail-alloeblockmailr_tests.o `test -f 'test/alloeblockmailr_tests.cpp' || echo '$(srcdir)/'`test/alloeblockmailr_tests.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(test_test_eblockmail_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o test/test_test_eblockmail-allocator_tests.o `test -f 'test/allocator_tests.cpp' || echo '$(srcdir)/'`test/allocator_tests.cpp
 
-test/test_test_eblockmail-alloeblockmailr_tests.obj: test/alloeblockmailr_tests.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(test_test_eblockmail_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT test/test_test_eblockmail-alloeblockmailr_tests.obj -MD -MP -MF test/$(DEPDIR)/test_test_eblockmail-alloeblockmailr_tests.Tpo -c -o test/test_test_eblockmail-alloeblockmailr_tests.obj `if test -f 'test/alloeblockmailr_tests.cpp'; then $(CYGPATH_W) 'test/alloeblockmailr_tests.cpp'; else $(CYGPATH_W) '$(srcdir)/test/alloeblockmailr_tests.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) test/$(DEPDIR)/test_test_eblockmail-alloeblockmailr_tests.Tpo test/$(DEPDIR)/test_test_eblockmail-alloeblockmailr_tests.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='test/alloeblockmailr_tests.cpp' object='test/test_test_eblockmail-alloeblockmailr_tests.obj' libtool=no @AMDEPBACKSLASH@
+test/test_test_eblockmail-allocator_tests.obj: test/allocator_tests.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(test_test_eblockmail_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT test/test_test_eblockmail-allocator_tests.obj -MD -MP -MF test/$(DEPDIR)/test_test_eblockmail-allocator_tests.Tpo -c -o test/test_test_eblockmail-allocator_tests.obj `if test -f 'test/allocator_tests.cpp'; then $(CYGPATH_W) 'test/allocator_tests.cpp'; else $(CYGPATH_W) '$(srcdir)/test/allocator_tests.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) test/$(DEPDIR)/test_test_eblockmail-allocator_tests.Tpo test/$(DEPDIR)/test_test_eblockmail-allocator_tests.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='test/allocator_tests.cpp' object='test/test_test_eblockmail-allocator_tests.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(test_test_eblockmail_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o test/test_test_eblockmail-alloeblockmailr_tests.obj `if test -f 'test/alloeblockmailr_tests.cpp'; then $(CYGPATH_W) 'test/alloeblockmailr_tests.cpp'; else $(CYGPATH_W) '$(srcdir)/test/alloeblockmailr_tests.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(test_test_eblockmail_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o test/test_test_eblockmail-allocator_tests.obj `if test -f 'test/allocator_tests.cpp'; then $(CYGPATH_W) 'test/allocator_tests.cpp'; else $(CYGPATH_W) '$(srcdir)/test/allocator_tests.cpp'; fi`
 
 test/test_test_eblockmail-base32_tests.o: test/base32_tests.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(test_test_eblockmail_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT test/test_test_eblockmail-base32_tests.o -MD -MP -MF test/$(DEPDIR)/test_test_eblockmail-base32_tests.Tpo -c -o test/test_test_eblockmail-base32_tests.o `test -f 'test/base32_tests.cpp' || echo '$(srcdir)/'`test/base32_tests.cpp

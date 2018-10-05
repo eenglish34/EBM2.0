@@ -65,7 +65,7 @@ public:
     }
 };
 
-typedef std::vector<unsigned char, secure_alloeblockmailr<unsigned char> > CKeyingMaterial;
+typedef std::vector<unsigned char, secure_allocator<unsigned char> > CKeyingMaterial;
 
 /** Encryption/decryption context with key information */
 class CCrypter

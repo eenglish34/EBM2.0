@@ -1290,7 +1290,7 @@ bool CheckZerocoinMint(const uint256& txHash, const CTxOut& txout, CValidationSt
 CoinSpend TxInToZerocoinSpend(const CTxIn& txin)
 {
     // Deserialize the CoinSpend intro a fresh object
-    std::vector<char, zero_after_free_alloeblockmailr<char> > dataTxIn;
+    std::vector<char, zero_after_free_allocator<char> > dataTxIn;
     dataTxIn.insert(dataTxIn.end(), txin.scriptSig.begin() + BIGNUM_SIZE, txin.scriptSig.end());
 
     CDataStream serializedCoinSpend(dataTxIn, SER_NETWORK, PROTOCOL_VERSION);
