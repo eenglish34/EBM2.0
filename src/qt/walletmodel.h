@@ -8,7 +8,7 @@
 #include "paymentrequestplus.h"
 #include "walletmodeltransaction.h"
 
-#include "alloeblockmailrs.h" /* for SecureString */
+#include "allocators.h" /* for SecureString */
 #include "swifttx.h"
 #include "wallet.h"
 

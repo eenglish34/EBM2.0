@@ -4,7 +4,7 @@
 
 #include "util.h"
 
-#include "alloeblockmailrs.h"
+#include "allocators.h"
 
 #include <boost/test/unit_test.hpp>
 

@@ -59,7 +59,7 @@ INCLUDEPATH += . \
 HEADERS += src/activemasternode.h \
            src/addrman.h \
            src/alert.h \
-           src/alloeblockmailrs.h \
+           src/allocators.h \
            src/amount.h \
            src/base58.h \
            src/bloom.h \
@@ -358,7 +358,7 @@ FORMS += src/qt/forms/addressbookpage.ui \
 SOURCES += src/activemasternode.cpp \
            src/addrman.cpp \
            src/alert.cpp \
-           src/alloeblockmailrs.cpp \
+           src/allocators.cpp \
            src/amount.cpp \
            src/base58.cpp \
            src/bloom.cpp \

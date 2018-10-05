@@ -10,7 +10,7 @@
 #include "guiconstants.h"
 #include "walletmodel.h"
 
-#include "alloeblockmailrs.h"
+#include "allocators.h"
 
 #include <QKeyEvent>
 #include <QMessageBox>
