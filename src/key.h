@@ -7,7 +7,7 @@
 #ifndef BITCOIN_KEY_H
 #define BITCOIN_KEY_H
 
-#include "alloeblockmailrs.h"
+#include "allocators.h"
 #include "serialize.h"
 #include "uint256.h"
 
@@ -29,10 +29,10 @@ struct CExtPubKey;
  */
 
 /**
- * secure_alloeblockmailr is defined in alloeblockmailrs.h
+ * secure_allocator is defined in allocators.h
  * CPrivKey is a serialized private key, with all parameters included (279 bytes)
  */
-typedef std::vector<unsigned char, secure_alloeblockmailr<unsigned char> > CPrivKey;
+typedef std::vector<unsigned char, secure_allocator<unsigned char> > CPrivKey;
 
 /** An encapsulated private key. */
 class CKey
