@@ -670,7 +670,7 @@ void BitcoinGUI::createTrayIcon(const NetworkStyle* networkStyle)
     trayIcon->show();
 #endif
 
-    notificator = new notificator(QApplication::applicationName(), trayIcon, this);
+    notificator = new Notificator(QApplication::applicationName(), trayIcon, this);
 }
 
 void BitcoinGUI::createTrayIconMenu()
@@ -1009,7 +1009,7 @@ void BitcoinGUI::message(const QString& title, const QString& message, unsigned 
     QString strTitle = tr("Eblockmail Core"); // default title
     // Default to information icon
     int nMBoxIcon = QMessageBox::Information;
-    int nNotifyIcon = notificator::Information;
+    int nNotifyIcon = Notificator::Information;
 
     QString msgType;
 
@@ -1038,10 +1038,10 @@ void BitcoinGUI::message(const QString& title, const QString& message, unsigned 
     // Check for error/warning icon
     if (style & CClientUIInterface::ICON_ERROR) {
         nMBoxIcon = QMessageBox::Critical;
-        nNotifyIcon = notificator::Critical;
+        nNotifyIcon = Notificator::Critical;
     } else if (style & CClientUIInterface::ICON_WARNING) {
         nMBoxIcon = QMessageBox::Warning;
-        nNotifyIcon = notificator::Warning;
+        nNotifyIcon = Notificator::Warning;
     }
 
     // Display message
@@ -1057,7 +1057,7 @@ void BitcoinGUI::message(const QString& title, const QString& message, unsigned 
         if (ret != NULL)
             *ret = r == QMessageBox::Ok;
     } else
-        notificator->notify((notificator::Class)nNotifyIcon, strTitle, message);
+        notificator->notify((Notificator::Class)nNotifyIcon, strTitle, message);
 }
 
 void BitcoinGUI::changeEvent(QEvent* e)
