@@ -21,16 +21,16 @@ class QDBusInterface;
 QT_END_NAMESPACE
 
 /** Cross-platform desktop notification client. */
-class Notifieblockmailr : public QObject
+class Notificator : public QObject
 {
     Q_OBJECT
 
 public:
-    /** Create a new notifieblockmailr.
+    /** Create a new notificator.
        @note Ownership of trayIcon is not transferred to this object.
     */
-    Notifieblockmailr(const QString& programName, QSystemTrayIcon* trayIcon, QWidget* parent);
-    ~Notifieblockmailr();
+    Notificator(const QString& programName, QSystemTrayIcon* trayIcon, QWidget* parent);
+    ~Notificator();
 
     // Message class
     enum Class {

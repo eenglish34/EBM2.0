@@ -2,7 +2,7 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "notifieblockmailr.h"
+#include "notificator.h"
 
 #include <QApplication>
 #include <QByteArray>
@@ -33,7 +33,7 @@
 const int FREEDESKTOP_NOTIFICATION_ICON_SIZE = 128;
 #endif
 
-Notifieblockmailr::Notifieblockmailr(const QString& programName, QSystemTrayIcon* trayicon, QWidget* parent) : QObject(parent),
+Notificator::Notificator(const QString& programName, QSystemTrayIcon* trayicon, QWidget* parent) : QObject(parent),
                                                                                                    parent(parent),
                                                                                                    programName(programName),
                                                                                                    mode(None),
@@ -76,7 +76,7 @@ Notifieblockmailr::Notifieblockmailr(const QString& programName, QSystemTrayIcon
 #endif
 }
 
-Notifieblockmailr::~Notifieblockmailr()
+Notificator::~Notificator()
 {
 #ifdef USE_DBUS
     delete interface;
@@ -164,7 +164,7 @@ QVariant FreedesktopImage::toVariant(const QImage& img)
     return QVariant(FreedesktopImage::metaType(), &fimg);
 }
 
-void Notifieblockmailr::notifyDBus(Class cls, const QString& title, const QString& text, const QIcon& icon, int millisTimeout)
+void Notificator::notifyDBus(Class cls, const QString& title, const QString& text, const QIcon& icon, int millisTimeout)
 {
     Q_UNUSED(cls);
     // Arguments for DBus call:
@@ -224,7 +224,7 @@ void Notifieblockmailr::notifyDBus(Class cls, const QString& title, const QStrin
 }
 #endif
 
-void Notifieblockmailr::notifySystray(Class cls, const QString& title, const QString& text, const QIcon& icon, int millisTimeout)
+void Notificator::notifySystray(Class cls, const QString& title, const QString& text, const QIcon& icon, int millisTimeout)
 {
     Q_UNUSED(icon);
     QSystemTrayIcon::MessageIcon sicon = QSystemTrayIcon::NoIcon;
@@ -245,7 +245,7 @@ void Notifieblockmailr::notifySystray(Class cls, const QString& title, const QSt
 
 // Based on Qt's tray icon implementation
 #ifdef Q_OS_MAC
-void Notifieblockmailr::notifyGrowl(Class cls, const QString& title, const QString& text, const QIcon& icon)
+void Notificator::notifyGrowl(Class cls, const QString& title, const QString& text, const QIcon& icon)
 {
     const QString script(
         "tell application \"%5\"\n"
@@ -290,11 +290,11 @@ void Notifieblockmailr::notifyGrowl(Class cls, const QString& title, const QStri
     QString quotedTitle(title), quotedText(text);
     quotedTitle.replace("\\", "\\\\").replace("\"", "\\");
     quotedText.replace("\\", "\\\\").replace("\"", "\\");
-    QString growlApp(this->mode == Notifieblockmailr::Growl13 ? "Growl" : "GrowlHelperApp");
+    QString growlApp(this->mode == Notificator::Growl13 ? "Growl" : "GrowlHelperApp");
     MacNotificationHandler::instance()->sendAppleScript(script.arg(notificationApp, quotedTitle, quotedText, notificationIcon, growlApp));
 }
 
-void Notifieblockmailr::notifyMacUserNotificationCenter(Class cls, const QString& title, const QString& text, const QIcon& icon)
+void Notificator::notifyMacUserNotificationCenter(Class cls, const QString& title, const QString& text, const QIcon& icon)
 {
     // icon is not supported by the user notification center yet. OSX will use the app icon.
     MacNotificationHandler::instance()->showNotification(title, text);
@@ -302,7 +302,7 @@ void Notifieblockmailr::notifyMacUserNotificationCenter(Class cls, const QString
 
 #endif
 
-void Notifieblockmailr::notify(Class cls, const QString& title, const QString& text, const QIcon& icon, int millisTimeout)
+void Notificator::notify(Class cls, const QString& title, const QString& text, const QIcon& icon, int millisTimeout)
 {
     switch (mode) {
 #ifdef USE_DBUS

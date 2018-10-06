@@ -21,7 +21,7 @@
 
 class ClientModel;
 class NetworkStyle;
-class Notifieblockmailr;
+class Notificator;
 class OptionsModel;
 class BlockExplorer;
 class RPCConsole;
@@ -130,7 +130,7 @@ private:
 
     QSystemTrayIcon* trayIcon;
     QMenu* trayIconMenu;
-    Notifieblockmailr* notifieblockmailr;
+    Notificator* notificator;
     RPCConsole* rpcConsole;
     BlockExplorer* explorerWindow;
 
