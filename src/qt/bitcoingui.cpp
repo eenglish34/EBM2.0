@@ -12,7 +12,7 @@
 #include "guiutil.h"
 #include "miner.h"
 #include "networkstyle.h"
-#include "notifieblockmailr.h"
+#include "notificator.h"
 #include "openuridialog.h"
 #include "optionsdialog.h"
 #include "optionsmodel.h"
@@ -105,7 +105,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
                                                                             multiSendAction(0),
                                                                             trayIcon(0),
                                                                             trayIconMenu(0),
-                                                                            notifieblockmailr(0),
+                                                                            notificator(0),
                                                                             rpcConsole(0),
                                                                             explorerWindow(0),
                                                                             prevBlocks(0),
@@ -670,7 +670,7 @@ void BitcoinGUI::createTrayIcon(const NetworkStyle* networkStyle)
     trayIcon->show();
 #endif
 
-    notifieblockmailr = new Notifieblockmailr(QApplication::applicationName(), trayIcon, this);
+    notificator = new notificator(QApplication::applicationName(), trayIcon, this);
 }
 
 void BitcoinGUI::createTrayIconMenu()
@@ -1009,7 +1009,7 @@ void BitcoinGUI::message(const QString& title, const QString& message, unsigned 
     QString strTitle = tr("Eblockmail Core"); // default title
     // Default to information icon
     int nMBoxIcon = QMessageBox::Information;
-    int nNotifyIcon = Notifieblockmailr::Information;
+    int nNotifyIcon = notificator::Information;
 
     QString msgType;
 
@@ -1038,10 +1038,10 @@ void BitcoinGUI::message(const QString& title, const QString& message, unsigned 
     // Check for error/warning icon
     if (style & CClientUIInterface::ICON_ERROR) {
         nMBoxIcon = QMessageBox::Critical;
-        nNotifyIcon = Notifieblockmailr::Critical;
+        nNotifyIcon = notificator::Critical;
     } else if (style & CClientUIInterface::ICON_WARNING) {
         nMBoxIcon = QMessageBox::Warning;
-        nNotifyIcon = Notifieblockmailr::Warning;
+        nNotifyIcon = notificator::Warning;
     }
 
     // Display message
@@ -1057,7 +1057,7 @@ void BitcoinGUI::message(const QString& title, const QString& message, unsigned 
         if (ret != NULL)
             *ret = r == QMessageBox::Ok;
     } else
-        notifieblockmailr->notify((Notifieblockmailr::Class)nNotifyIcon, strTitle, message);
+        notificator->notify((notificator::Class)nNotifyIcon, strTitle, message);
 }
 
 void BitcoinGUI::changeEvent(QEvent* e)
