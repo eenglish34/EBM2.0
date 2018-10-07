@@ -435,7 +435,7 @@ am__qt_libbitcoinqt_a_SOURCES_DIST = qt/bitcoinaddressvalidator.cpp \
 	qt/bitcoinamountfield.cpp qt/bitcoingui.cpp \
 	qt/bitcoinunits.cpp qt/blockexplorer.cpp qt/clientmodel.cpp \
 	qt/csvmodelwriter.cpp qt/guiutil.cpp qt/intro.cpp \
-	qt/masternodelist.cpp qt/networkstyle.cpp qt/notifieblockmailr.cpp \
+	qt/masternodelist.cpp qt/networkstyle.cpp qt/notificator.cpp \
 	qt/optionsdialog.cpp qt/optionsmodel.cpp qt/peertablemodel.cpp \
 	qt/platformstyle.cpp qt/qvalidatedlineedit.cpp \
 	qt/qvaluecombobox.cpp qt/rpcconsole.cpp qt/splashscreen.cpp \
@@ -465,7 +465,7 @@ am__qt_libbitcoinqt_a_SOURCES_DIST = qt/bitcoinaddressvalidator.cpp \
 	qt/guiconstants.h qt/guiutil.h qt/intro.h \
 	qt/macdockiconhandler.h qt/macnotificationhandler.h \
 	qt/masternodelist.h qt/multisenddialog.h qt/multisigdialog.h \
-	qt/networkstyle.h qt/notifieblockmailr.h qt/openuridialog.h \
+	qt/networkstyle.h qt/notificator.h qt/openuridialog.h \
 	qt/optionsdialog.h qt/optionsmodel.h qt/overviewpage.h \
 	qt/paymentrequestplus.h qt/paymentserver.h qt/peertablemodel.h \
 	qt/platformstyle.h qt/qvalidatedlineedit.h qt/qvaluecombobox.h \
@@ -593,7 +593,7 @@ am__qt_libbitcoinqt_a_SOURCES_DIST = qt/bitcoinaddressvalidator.cpp \
 @ENABLE_QT_TRUE@	qt/qt_libbitcoinqt_a-intro.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/qt_libbitcoinqt_a-masternodelist.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/qt_libbitcoinqt_a-networkstyle.$(OBJEXT) \
-@ENABLE_QT_TRUE@	qt/qt_libbitcoinqt_a-notifieblockmailr.$(OBJEXT) \
+@ENABLE_QT_TRUE@	qt/qt_libbitcoinqt_a-notificator.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/qt_libbitcoinqt_a-optionsdialog.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/qt_libbitcoinqt_a-optionsmodel.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/qt_libbitcoinqt_a-peertablemodel.$(OBJEXT) \
@@ -634,7 +634,7 @@ am__qt_libbitcoinqt_a_SOURCES_DIST = qt/bitcoinaddressvalidator.cpp \
 @ENABLE_QT_TRUE@	qt/qt_libbitcoinqt_a-moc_masternodelist.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/qt_libbitcoinqt_a-moc_multisenddialog.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/qt_libbitcoinqt_a-moc_multisigdialog.$(OBJEXT) \
-@ENABLE_QT_TRUE@	qt/qt_libbitcoinqt_a-moc_notifieblockmailr.$(OBJEXT) \
+@ENABLE_QT_TRUE@	qt/qt_libbitcoinqt_a-moc_notificator.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/qt_libbitcoinqt_a-moc_openuridialog.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/qt_libbitcoinqt_a-moc_optionsdialog.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/qt_libbitcoinqt_a-moc_optionsmodel.$(OBJEXT) \
@@ -2142,7 +2142,7 @@ EXTRA_DIST = leveldb $(am__append_18)
 @ENABLE_QT_TRUE@  qt/moc_masternodelist.cpp \
 @ENABLE_QT_TRUE@  qt/moc_multisenddialog.cpp \
 @ENABLE_QT_TRUE@  qt/moc_multisigdialog.cpp\
-@ENABLE_QT_TRUE@  qt/moc_notifieblockmailr.cpp \
+@ENABLE_QT_TRUE@  qt/moc_notificator.cpp \
 @ENABLE_QT_TRUE@  qt/moc_openuridialog.cpp \
 @ENABLE_QT_TRUE@  qt/moc_optionsdialog.cpp \
 @ENABLE_QT_TRUE@  qt/moc_optionsmodel.cpp \
@@ -2215,7 +2215,7 @@ EXTRA_DIST = leveldb $(am__append_18)
 @ENABLE_QT_TRUE@  qt/multisenddialog.h \
 @ENABLE_QT_TRUE@  qt/multisigdialog.h\
 @ENABLE_QT_TRUE@  qt/networkstyle.h \
-@ENABLE_QT_TRUE@  qt/notifieblockmailr.h \
+@ENABLE_QT_TRUE@  qt/notificator.h \
 @ENABLE_QT_TRUE@  qt/openuridialog.h \
 @ENABLE_QT_TRUE@  qt/optionsdialog.h \
 @ENABLE_QT_TRUE@  qt/optionsmodel.h \
@@ -2315,7 +2315,7 @@ EXTRA_DIST = leveldb $(am__append_18)
 @ENABLE_QT_TRUE@	qt/clientmodel.cpp qt/csvmodelwriter.cpp \
 @ENABLE_QT_TRUE@	qt/guiutil.cpp qt/intro.cpp \
 @ENABLE_QT_TRUE@	qt/masternodelist.cpp qt/networkstyle.cpp \
-@ENABLE_QT_TRUE@	qt/notifieblockmailr.cpp qt/optionsdialog.cpp \
+@ENABLE_QT_TRUE@	qt/notificator.cpp qt/optionsdialog.cpp \
 @ENABLE_QT_TRUE@	qt/optionsmodel.cpp qt/peertablemodel.cpp \
 @ENABLE_QT_TRUE@	qt/platformstyle.cpp qt/qvalidatedlineedit.cpp \
 @ENABLE_QT_TRUE@	qt/qvaluecombobox.cpp qt/rpcconsole.cpp \
@@ -2665,7 +2665,7 @@ qt/qt_libbitcoinqt_a-masternodelist.$(OBJEXT): qt/$(am__dirstamp) \
 	qt/$(DEPDIR)/$(am__dirstamp)
 qt/qt_libbitcoinqt_a-networkstyle.$(OBJEXT): qt/$(am__dirstamp) \
 	qt/$(DEPDIR)/$(am__dirstamp)
-qt/qt_libbitcoinqt_a-notifieblockmailr.$(OBJEXT): qt/$(am__dirstamp) \
+qt/qt_libbitcoinqt_a-notificator.$(OBJEXT): qt/$(am__dirstamp) \
 	qt/$(DEPDIR)/$(am__dirstamp)
 qt/qt_libbitcoinqt_a-optionsdialog.$(OBJEXT): qt/$(am__dirstamp) \
 	qt/$(DEPDIR)/$(am__dirstamp)
@@ -2797,7 +2797,7 @@ qt/qt_libbitcoinqt_a-moc_multisenddialog.$(OBJEXT):  \
 	qt/$(am__dirstamp) qt/$(DEPDIR)/$(am__dirstamp)
 qt/qt_libbitcoinqt_a-moc_multisigdialog.$(OBJEXT): qt/$(am__dirstamp) \
 	qt/$(DEPDIR)/$(am__dirstamp)
-qt/qt_libbitcoinqt_a-moc_notifieblockmailr.$(OBJEXT): qt/$(am__dirstamp) \
+qt/qt_libbitcoinqt_a-moc_notificator.$(OBJEXT): qt/$(am__dirstamp) \
 	qt/$(DEPDIR)/$(am__dirstamp)
 qt/qt_libbitcoinqt_a-moc_openuridialog.$(OBJEXT): qt/$(am__dirstamp) \
 	qt/$(DEPDIR)/$(am__dirstamp)
@@ -3352,7 +3352,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/qt_libbitcoinqt_a-moc_masternodelist.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/qt_libbitcoinqt_a-moc_multisenddialog.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/qt_libbitcoinqt_a-moc_multisigdialog.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/qt_libbitcoinqt_a-moc_notifieblockmailr.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/qt_libbitcoinqt_a-moc_notificator.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/qt_libbitcoinqt_a-moc_obfuscationconfig.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/qt_libbitcoinqt_a-moc_openuridialog.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/qt_libbitcoinqt_a-moc_optionsdialog.Po@am__quote@
@@ -3385,7 +3385,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/qt_libbitcoinqt_a-multisenddialog.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/qt_libbitcoinqt_a-multisigdialog.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/qt_libbitcoinqt_a-networkstyle.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/qt_libbitcoinqt_a-notifieblockmailr.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/qt_libbitcoinqt_a-notificator.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/qt_libbitcoinqt_a-obfuscationconfig.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/qt_libbitcoinqt_a-openuridialog.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/qt_libbitcoinqt_a-optionsdialog.Po@am__quote@
@@ -5468,19 +5468,19 @@ qt/qt_libbitcoinqt_a-networkstyle.obj: qt/networkstyle.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o qt/qt_libbitcoinqt_a-networkstyle.obj `if test -f 'qt/networkstyle.cpp'; then $(CYGPATH_W) 'qt/networkstyle.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/networkstyle.cpp'; fi`
 
-qt/qt_libbitcoinqt_a-notifieblockmailr.o: qt/notifieblockmailr.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT qt/qt_libbitcoinqt_a-notifieblockmailr.o -MD -MP -MF qt/$(DEPDIR)/qt_libbitcoinqt_a-notifieblockmailr.Tpo -c -o qt/qt_libbitcoinqt_a-notifieblockmailr.o `test -f 'qt/notifieblockmailr.cpp' || echo '$(srcdir)/'`qt/notifieblockmailr.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/$(DEPDIR)/qt_libbitcoinqt_a-notifieblockmailr.Tpo qt/$(DEPDIR)/qt_libbitcoinqt_a-notifieblockmailr.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/notifieblockmailr.cpp' object='qt/qt_libbitcoinqt_a-notifieblockmailr.o' libtool=no @AMDEPBACKSLASH@
+qt/qt_libbitcoinqt_a-notificator.o: qt/notificator.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT qt/qt_libbitcoinqt_a-notificator.o -MD -MP -MF qt/$(DEPDIR)/qt_libbitcoinqt_a-notificator.Tpo -c -o qt/qt_libbitcoinqt_a-notificator.o `test -f 'qt/notificator.cpp' || echo '$(srcdir)/'`qt/notificator.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/$(DEPDIR)/qt_libbitcoinqt_a-notificator.Tpo qt/$(DEPDIR)/qt_libbitcoinqt_a-notificator.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/notificator.cpp' object='qt/qt_libbitcoinqt_a-notificator.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o qt/qt_libbitcoinqt_a-notifieblockmailr.o `test -f 'qt/notifieblockmailr.cpp' || echo '$(srcdir)/'`qt/notifieblockmailr.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o qt/qt_libbitcoinqt_a-notificator.o `test -f 'qt/notificator.cpp' || echo '$(srcdir)/'`qt/notificator.cpp
 
-qt/qt_libbitcoinqt_a-notifieblockmailr.obj: qt/notifieblockmailr.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT qt/qt_libbitcoinqt_a-notifieblockmailr.obj -MD -MP -MF qt/$(DEPDIR)/qt_libbitcoinqt_a-notifieblockmailr.Tpo -c -o qt/qt_libbitcoinqt_a-notifieblockmailr.obj `if test -f 'qt/notifieblockmailr.cpp'; then $(CYGPATH_W) 'qt/notifieblockmailr.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/notifieblockmailr.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/$(DEPDIR)/qt_libbitcoinqt_a-notifieblockmailr.Tpo qt/$(DEPDIR)/qt_libbitcoinqt_a-notifieblockmailr.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/notifieblockmailr.cpp' object='qt/qt_libbitcoinqt_a-notifieblockmailr.obj' libtool=no @AMDEPBACKSLASH@
+qt/qt_libbitcoinqt_a-notificator.obj: qt/notificator.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT qt/qt_libbitcoinqt_a-notificator.obj -MD -MP -MF qt/$(DEPDIR)/qt_libbitcoinqt_a-notificator.Tpo -c -o qt/qt_libbitcoinqt_a-notificator.obj `if test -f 'qt/notificator.cpp'; then $(CYGPATH_W) 'qt/notificator.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/notificator.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/$(DEPDIR)/qt_libbitcoinqt_a-notificator.Tpo qt/$(DEPDIR)/qt_libbitcoinqt_a-notificator.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/notificator.cpp' object='qt/qt_libbitcoinqt_a-notificator.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o qt/qt_libbitcoinqt_a-notifieblockmailr.obj `if test -f 'qt/notifieblockmailr.cpp'; then $(CYGPATH_W) 'qt/notifieblockmailr.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/notifieblockmailr.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o qt/qt_libbitcoinqt_a-notificator.obj `if test -f 'qt/notificator.cpp'; then $(CYGPATH_W) 'qt/notificator.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/notificator.cpp'; fi`
 
 qt/qt_libbitcoinqt_a-optionsdialog.o: qt/optionsdialog.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT qt/qt_libbitcoinqt_a-optionsdialog.o -MD -MP -MF qt/$(DEPDIR)/qt_libbitcoinqt_a-optionsdialog.Tpo -c -o qt/qt_libbitcoinqt_a-optionsdialog.o `test -f 'qt/optionsdialog.cpp' || echo '$(srcdir)/'`qt/optionsdialog.cpp
@@ -6392,19 +6392,19 @@ qt/qt_libbitcoinqt_a-moc_multisigdialog.obj: qt/moc_multisigdialog.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o qt/qt_libbitcoinqt_a-moc_multisigdialog.obj `if test -f 'qt/moc_multisigdialog.cpp'; then $(CYGPATH_W) 'qt/moc_multisigdialog.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/moc_multisigdialog.cpp'; fi`
 
-qt/qt_libbitcoinqt_a-moc_notifieblockmailr.o: qt/moc_notifieblockmailr.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT qt/qt_libbitcoinqt_a-moc_notifieblockmailr.o -MD -MP -MF qt/$(DEPDIR)/qt_libbitcoinqt_a-moc_notifieblockmailr.Tpo -c -o qt/qt_libbitcoinqt_a-moc_notifieblockmailr.o `test -f 'qt/moc_notifieblockmailr.cpp' || echo '$(srcdir)/'`qt/moc_notifieblockmailr.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/$(DEPDIR)/qt_libbitcoinqt_a-moc_notifieblockmailr.Tpo qt/$(DEPDIR)/qt_libbitcoinqt_a-moc_notifieblockmailr.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/moc_notifieblockmailr.cpp' object='qt/qt_libbitcoinqt_a-moc_notifieblockmailr.o' libtool=no @AMDEPBACKSLASH@
+qt/qt_libbitcoinqt_a-moc_notificator.o: qt/moc_notificator.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT qt/qt_libbitcoinqt_a-moc_notificator.o -MD -MP -MF qt/$(DEPDIR)/qt_libbitcoinqt_a-moc_notificator.Tpo -c -o qt/qt_libbitcoinqt_a-moc_notificator.o `test -f 'qt/moc_notificator.cpp' || echo '$(srcdir)/'`qt/moc_notificator.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/$(DEPDIR)/qt_libbitcoinqt_a-moc_notificator.Tpo qt/$(DEPDIR)/qt_libbitcoinqt_a-moc_notificator.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/moc_notificator.cpp' object='qt/qt_libbitcoinqt_a-moc_notificator.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o qt/qt_libbitcoinqt_a-moc_notifieblockmailr.o `test -f 'qt/moc_notifieblockmailr.cpp' || echo '$(srcdir)/'`qt/moc_notifieblockmailr.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o qt/qt_libbitcoinqt_a-moc_notificator.o `test -f 'qt/moc_notificator.cpp' || echo '$(srcdir)/'`qt/moc_notificator.cpp
 
-qt/qt_libbitcoinqt_a-moc_notifieblockmailr.obj: qt/moc_notifieblockmailr.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT qt/qt_libbitcoinqt_a-moc_notifieblockmailr.obj -MD -MP -MF qt/$(DEPDIR)/qt_libbitcoinqt_a-moc_notifieblockmailr.Tpo -c -o qt/qt_libbitcoinqt_a-moc_notifieblockmailr.obj `if test -f 'qt/moc_notifieblockmailr.cpp'; then $(CYGPATH_W) 'qt/moc_notifieblockmailr.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/moc_notifieblockmailr.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/$(DEPDIR)/qt_libbitcoinqt_a-moc_notifieblockmailr.Tpo qt/$(DEPDIR)/qt_libbitcoinqt_a-moc_notifieblockmailr.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/moc_notifieblockmailr.cpp' object='qt/qt_libbitcoinqt_a-moc_notifieblockmailr.obj' libtool=no @AMDEPBACKSLASH@
+qt/qt_libbitcoinqt_a-moc_notificator.obj: qt/moc_notificator.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT qt/qt_libbitcoinqt_a-moc_notificator.obj -MD -MP -MF qt/$(DEPDIR)/qt_libbitcoinqt_a-moc_notificator.Tpo -c -o qt/qt_libbitcoinqt_a-moc_notificator.obj `if test -f 'qt/moc_notificator.cpp'; then $(CYGPATH_W) 'qt/moc_notificator.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/moc_notificator.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/$(DEPDIR)/qt_libbitcoinqt_a-moc_notificator.Tpo qt/$(DEPDIR)/qt_libbitcoinqt_a-moc_notificator.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/moc_notificator.cpp' object='qt/qt_libbitcoinqt_a-moc_notificator.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o qt/qt_libbitcoinqt_a-moc_notifieblockmailr.obj `if test -f 'qt/moc_notifieblockmailr.cpp'; then $(CYGPATH_W) 'qt/moc_notifieblockmailr.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/moc_notifieblockmailr.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o qt/qt_libbitcoinqt_a-moc_notificator.obj `if test -f 'qt/moc_notificator.cpp'; then $(CYGPATH_W) 'qt/moc_notificator.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/moc_notificator.cpp'; fi`
 
 qt/qt_libbitcoinqt_a-moc_openuridialog.o: qt/moc_openuridialog.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT qt/qt_libbitcoinqt_a-moc_openuridialog.o -MD -MP -MF qt/$(DEPDIR)/qt_libbitcoinqt_a-moc_openuridialog.Tpo -c -o qt/qt_libbitcoinqt_a-moc_openuridialog.o `test -f 'qt/moc_openuridialog.cpp' || echo '$(srcdir)/'`qt/moc_openuridialog.cpp

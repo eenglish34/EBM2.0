@@ -79,7 +79,7 @@ QT_MOC_CPP = \
   qt/moc_masternodelist.cpp \
   qt/moc_multisenddialog.cpp \
   qt/moc_multisigdialog.cpp\
-  qt/moc_notifieblockmailr.cpp \
+  qt/moc_notificator.cpp \
   qt/moc_openuridialog.cpp \
   qt/moc_optionsdialog.cpp \
   qt/moc_optionsmodel.cpp \
@@ -154,7 +154,7 @@ BITCOIN_QT_H = \
   qt/multisenddialog.h \
   qt/multisigdialog.h\
   qt/networkstyle.h \
-  qt/notifieblockmailr.h \
+  qt/notificator.h \
   qt/openuridialog.h \
   qt/optionsdialog.h \
   qt/optionsmodel.h \
@@ -260,7 +260,7 @@ BITCOIN_QT_CPP = \
   qt/intro.cpp \
   qt/masternodelist.cpp \
   qt/networkstyle.cpp \
-  qt/notifieblockmailr.cpp \
+  qt/notificator.cpp \
   qt/optionsdialog.cpp \
   qt/optionsmodel.cpp \
   qt/peertablemodel.cpp \
