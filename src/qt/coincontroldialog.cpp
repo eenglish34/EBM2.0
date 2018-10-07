@@ -388,7 +388,7 @@ void CoinControlDialog::sortView(int column, Qt::SortOrder order)
     sortColumn = column;
     sortOrder = order;
     ui->treeWidget->sortItems(column, order);
-    ui->treeWidget->header()->setSortIndieblockmailr(getMappedColumn(sortColumn), sortOrder);
+    ui->treeWidget->header()->setSortIndicator(getMappedColumn(sortColumn), sortOrder);
 }
 
 // treeview: clicked on header
@@ -396,7 +396,7 @@ void CoinControlDialog::headerSectionClicked(int logicalIndex)
 {
     if (logicalIndex == COLUMN_CHECKBOX) // click on most left column -> do nothing
     {
-        ui->treeWidget->header()->setSortIndieblockmailr(getMappedColumn(sortColumn), sortOrder);
+        ui->treeWidget->header()->setSortIndicator(getMappedColumn(sortColumn), sortOrder);
     } else {
         logicalIndex = getMappedColumn(logicalIndex, false);
 
