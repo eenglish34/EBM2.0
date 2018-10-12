@@ -181,8 +181,8 @@ public:
         printf("merklehash: %s\n",genesis.hashMerkleRoot.ToString().c_str());
 			*/
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("00004721b5eef2bab524c9614c2af96b2eda9b3c596e52696ce77ef2ac36284e"));
-        assert(genesis.hashMerkleRoot == uint256("c78c488441f21e66e7dbecd53a3675231cfdd138573e22164bef0d4235d33902"));
+        assert(hashGenesisBlock == uint256("b2620f2dc2ed814f878acfda20dc4b72431645646d2744b3c6f24c26fadc1f15"));
+        assert(genesis.hashMerkleRoot == uint256("99af231d334d6dc6e06097e2b70bad0819ac54f06b695ad410b22c6b0ff97260"));
 
        vSeeds.push_back(CDNSSeedData("137.118.248.119", "137.118.248.119"));
        vSeeds.push_back(CDNSSeedData("52.90.29.124", "52.90.29.124"));
