@@ -57,6 +57,7 @@
                <font>
                 <weight>75</weight>
                 <bold>true</bold>
+				<color>black</color>
                </font>
               </property>
               <property name="text">
