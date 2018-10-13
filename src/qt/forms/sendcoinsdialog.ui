@@ -81,7 +81,6 @@
              <font>
               <weight>75</weight>
               <bold>true</bold>
-			  <font color="black">
              </font>
             </property>
             <property name="styleSheet">
