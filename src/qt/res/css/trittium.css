@@ -147,7 +147,7 @@ color:#333;
 }
 
 QTabBar::tab:hover:!selected {
-background-color:#dedbe5;
+background-color:#a1c0dd;
 }
 
 QWidget {
@@ -162,7 +162,7 @@ color:#333;
 }
 
 QToolTip {
-background-color:#dedbe5;
+background-color:#a1c0dd;
 color:#333;
 }
 
@@ -673,7 +673,7 @@ font-weight:bold;
 }
 
 QDialog#OpenURIDialog QPushButton#selectFileButton { /* ... Button */
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #f6f6f6, stop: .1 rgba(250, 250, 250, 128), stop: .95 rgba(250, 250, 250, 255), stop: 1 #ebebeb);
+background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #f6f6f6, stop: .1 rgba(250, 250, 250, 128), stop: .95 rgba(250, 250, 250, 255), stop: 1 #a1c0dd);
 border:1px solid #d2d2d2;
 color:#616161;
 padding-left:10px;
@@ -681,7 +681,7 @@ padding-right:10px;
 }
 
 QDialog#OpenURIDialog QPushButton#selectFileButton:hover {
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #f6f6f6, stop: .1 rgba(240, 240, 240, 255), stop: .95 rgba(240, 240, 240, 255), stop: 1 #ebebeb);
+background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #f6f6f6, stop: .1 rgba(240, 240, 240, 255), stop: .95 rgba(240, 240, 240, 255), stop: 1 #a1c0dd);
 color:#333;
 }
 
@@ -1690,7 +1690,7 @@ font-weight:bold;
 }
 
 QCalendarWidget QAbstractItemView { /* Calendar widget days */
-alternate-background-color:#dedbe5;
+alternate-background-color:#a1c0dd;
 background-color:#fff;
 }
 
