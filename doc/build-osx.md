@@ -44,8 +44,8 @@ Instructions: Homebrew
 
 1. Clone the github tree to get the source code and go into the directory.
 
-        git clone https://github.com/eastcoastcrypto/Eblockmail.git
-        cd Eblockmail
+        git clone https://github.com/eenglish34/EBM2.0
+        cd EBM2.0
 
 2.  Build eblockmaild:
 

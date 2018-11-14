@@ -2174,7 +2174,7 @@ if (!vMasternodez.empty()){
     if (nHeight == 0) {
         return 1 * COIN;  //genesis
     } else if(nHeight == 1 ){
-        return  400000 * COIN;  //400k premine
+        return  10000000 * COIN;  //10M premine
     } else if(nHeight > 1 && nHeight <= GetSporkValue(SPORK_35_MOVE_REWARDS)) {
 	if (nHeight < 302) {
 	return  .01 * COIN;
