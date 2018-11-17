@@ -1,4 +1,4 @@
-Eblockmail - Port: 33888 RPC Port: 6082
+Eblockmail - Port: 3434 RPC Port: 3435
 
 Specs
   Type: Masternode/POS
@@ -8,9 +8,8 @@ Specs
   Masternode Confirmations: 15
   Minimum coins required for staking: 100
   POS Maturity Time: 2 hours
-  Total Coin Supply: 420,000,000
-  Pre mine: 400,000
-  Pre-mine %: Less than 1%
+  Total Coin Supply: 500,000,000
+  Pre mine: 10,000,000
 
 
 Linux Compiling Instruction
@@ -20,4 +19,4 @@ Linux Compiling Instruction
 
 when done
   strip ./eblockmaild
-  strip ./catcoin-cli
+  strip ./eblockmail-cli
