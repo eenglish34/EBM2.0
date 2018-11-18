@@ -125,7 +125,7 @@ public:
         nModifierUpdateBlock = 999999999;
         nZerocoinStartHeight = 361;
         nAccumulatorStartHeight = 1;
-        nZerocoinStartTime = 1527811200; // Friday, June 1, 2018 12:00:00 AM - GMT
+        nZerocoinStartTime = 1525867200; // Thursday, Saturday, May 9, 2018 8:17:00 PM GNT
         nBlockEnforceSerialRange = 1; //Enforce serial range starting this block
         nBlockRecalculateAccumulators = ~1; //Trigger a recalculation of accumulators
         nBlockFirstFraudulent = ~1; //First block that bad serials emerged
