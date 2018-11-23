@@ -121,11 +121,11 @@ public:
         nMaxMoneyOut = 2500000000 * COIN; //500,000,000
 
         /** Height or Time Based Activations **/
-        nLastPOWBlock = 360;
-        nModifierUpdateBlock = 999999999;
-        nZerocoinStartHeight = 361;
+        nLastPOWBlock = 360000;
+        nModifierUpdateBlock = 903494;
+        nZerocoinStartHeight = 360001;
         nAccumulatorStartHeight = 1;
-        nZerocoinStartTime = 1525867200; // Thursday, Saturday, May 9, 2018 8:17:00 PM GNT
+        nZerocoinStartTime = 1527811200; // Thursday, Saturday, May 9, 2018 8:17:00 PM GNT
         nBlockEnforceSerialRange = 1; //Enforce serial range starting this block
         nBlockRecalculateAccumulators = ~1; //Trigger a recalculation of accumulators
         nBlockFirstFraudulent = ~1; //First block that bad serials emerged
@@ -184,10 +184,10 @@ public:
         assert(hashGenesisBlock == uint256("b2620f2dc2ed814f878acfda20dc4b72431645646d2744b3c6f24c26fadc1f15"));
         assert(genesis.hashMerkleRoot == uint256("99af231d334d6dc6e06097e2b70bad0819ac54f06b695ad410b22c6b0ff97260"));
 
-       vSeeds.push_back(CDNSSeedData("137.118.248.119", "137.118.248.119"));
-       vSeeds.push_back(CDNSSeedData("52.90.29.124", "52.90.29.124"));
-       vSeeds.push_back(CDNSSeedData("54.196.171.182", "54.196.171.182"));
-       vSeeds.push_back(CDNSSeedData("52.87.248.50", "52.87.248.50"));
+    //   vSeeds.push_back(CDNSSeedData("137.118.248.110", "137.118.248.110"));
+    //   vSeeds.push_back(CDNSSeedData("52.90.29.124", "52.90.29.124"));
+    //   vSeeds.push_back(CDNSSeedData("54.196.171.182", "54.196.171.182"));
+    //   vSeeds.push_back(CDNSSeedData("52.87.248.50", "52.87.248.50"));
 		base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 28);
 		base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 4);
 		base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 28+128);
@@ -278,7 +278,7 @@ public:
         nMinerThreads = 0;
         nTargetTimespan = 1 * 60; // Eblockmail: 1 day
         nTargetSpacing = 1 * 60;  // Eblockmail: 1 minute
-        nLastPOWBlock = 200;
+        nLastPOWBlock = 360;
         nMaturity = 15;
         nMasternodeCountDrift = 4;
         nModifierUpdateBlock = 51197; //approx Mon, 17 Apr 2017 04:00:00 GMT
